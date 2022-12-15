@@ -1,0 +1,68 @@
+* {
+    margin:0px;
+    padding: 0px;
+    top: 0;
+  }
+
+
+/* --- HEADER --- */
+
+#logo {
+	height:100px;
+	border:none;
+	display:flex;
+    right: 0;
+    margin: 0px 25px;
+}
+
+header > div > img {
+	height:100px;
+	border: none;
+}
+
+/* --- MENU --- */
+
+
+header nav ul{
+	list-style-type: none;
+    display: flex;
+}
+
+header nav li{
+	float: left;
+	display: flex;
+    align-items: center;
+	text-align: center;
+}
+
+
+header nav{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100vw;
+    box-sizing: border-box;
+    align-items: center;
+    background-color: rgb(230, 55, 174);
+
+}
+
+header nav a{
+	font-weight:bold;
+	display:block;
+	text-decoration:none;
+	color:black;
+	border-bottom:2px solid transparent;
+	margin: 0px 25px;
+}
+
+header nav ul li a:hover{
+	color:white;
+}
+
+
+header nav ul li{
+    padding: 2%;
+	text-align:center;
+	position:relative;
+}
