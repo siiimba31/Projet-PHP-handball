@@ -14,14 +14,14 @@
     <link rel="stylesheet" href="../source/style/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href=page_accueil.html>ACCUEIL</a></li>
-                <li><a href=presentation_BUT.html>JOUEURS</a></li>
-                <li><a href=Competence.html>MATCH</a></li>
-                <li><a href=contact.html>STATISTIQUE</a></li>
-                <li><a href=contact.html>DECONNEXION</a></li>
+    <header id="entete">
+        <nav id="navmenu">
+            <ul id="ulmenu">
+                <li class="limenu"><a href=page_accueil.html>ACCUEIL</a></li>
+                <li class="limenu"><a href=presentation_BUT.html>JOUEURS</a></li>
+                <li class="limenu"><a href=Competence.html>MATCH</a></li>
+                <li class="limenu"><a href=contact.html>STATISTIQUE</a></li>
+                <li class="limenu"><a href=contact.html>DECONNEXION</a></li>
             </ul>
             <img id="logo" src="../source/img/logo.png" alt="logo équipe">
         </nav>
