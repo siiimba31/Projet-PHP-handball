@@ -17,7 +17,7 @@
     <header id="entete">
         <nav id="navmenu">
             <ul id="ulmenu">
-                <li class="limenu"><a href=page_accueil.html>ACCUEIL</a></li>
+                <li class="limenu"><a href=accueil.php>ACCUEIL</a></li>
                 <li class="limenu"><a href=presentation_BUT.html>JOUEURS</a></li>
                 <li class="limenu"><a href=Competence.html>MATCH</a></li>
                 <li class="limenu"><a href=contact.html>STATISTIQUE</a></li>
