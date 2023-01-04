@@ -1,9 +1,6 @@
 <?php 
 require './../source/fonctionPHP/est_connecte.php';
-if (!est_connecte()){
-    header ('location: ./../index.php');
-    exit();
-}
+utilisateur_connecte();
 
 
 $title='Accueil';
