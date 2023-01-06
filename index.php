@@ -10,7 +10,7 @@ if (!empty($_POST['pseudo']))
     </head>
     <body id="connexion">
         <div id="container">
-             <form action="verification.php" method="POST">
+             <form action="./source/fonctionPHP/verification.php" method="POST">
                 <h1>Connexion</h1>
     
                     <label><b>Nom d'utilisateur</b></label>

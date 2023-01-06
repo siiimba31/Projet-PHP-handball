@@ -3,40 +3,39 @@
     if(isset($_POST['username']) && isset($_POST['password']))
     {
         // connexion à la base de données
-        require './../source/fonctionPHP/connexionbd.php';
+        require './connexionbd.php';
 
-        
-        // on applique les deux fonctions mysqli_real_escape_string et htmlspecialchars
-        // pour éliminer toute attaque de type injection SQL et XSS
-        $username = mysqli_real_escape_string($db,htmlspecialchars($_POST['username'])); 
-        $password = mysqli_real_escape_string($db,htmlspecialchars($_POST['password']));
-        
+        $username=$_POST['username'];
+        $password=$_POST['password'];
+        echo $username;
         if($username !== "" && $password !== "")
         {
-            $requete = "SELECT count(*) FROM utilisateur where 
-            nom_utilisateur = '".$username."' and mot_de_passe = '".$password."' ";
-            $exec_requete = mysqli_query($db,$requete);
-            $reponse = mysqli_fetch_array($exec_requete);
-            $count = $reponse['count(*)'];
+            $requete = $linkpdo->prepare("SELECT mot_de_passe as mdp FROM utilisateur where nom_utilisateur = '".$username."' ");
+            $requete->execute();
+            $reponse = $requete->fetch(PDO::FETCH_ASSOC);
+            echo "bjr".$reponse['mdp'];
+            $hashmotdepasse = $reponse['mdp'];
+            $resultat = password_verify($password, $hashmotdepasse);
 
-            if($count!=0) // nom d'utilisateur et mot de passe correctes
-            {
-                $_SESSION['connecte'] = $username;
-                header('Location: ./page/accueil.php');
-            }
-            else
-            {
-                header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
-            }
+
+            // if($count!=0) // nom d'utilisateur et mot de passe correctes
+            // {
+            //     $_SESSION['connecte'] = $username;
+            //     header('Location: ./page/accueil.php');
+            // }
+            // else
+            // {
+            //     header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
+            // }
         }
-        else
-        {
-            header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
-        }
+        // else
+        // {
+        //     header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
+        // }
     }
-    else
-    {
-        header('Location: login.php');
-    }
-    mysqli_close($db); // fermer la connexion
+    // else
+    // {
+    //     header('Location: login.php');
+    // }
+    
 ?>
