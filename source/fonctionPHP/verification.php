@@ -7,35 +7,33 @@
 
         $username=$_POST['username'];
         $password=$_POST['password'];
-        echo $username;
         if($username !== "" && $password !== "")
         {
-            $requete = $linkpdo->prepare("SELECT mot_de_passe as mdp FROM utilisateur where nom_utilisateur = '".$username."' ");
-            $requete->execute();
-            $reponse = $requete->fetch(PDO::FETCH_ASSOC);
-            echo "bjr".$reponse['mdp'];
-            $hashmotdepasse = $reponse['mdp'];
-            $resultat = password_verify($password, $hashmotdepasse);
+            $requete = $linkpdo->query("SELECT motdepasse as mdp FROM utilisateur where username ='$username' ");
+            $resultat = $requete->fetchAll();
+            echo $resultat[0]['mdp']."alope";
+            $hashmotdepasse = $resultat[0]['mdp'];
+            $result = password_verify($password, $hashmotdepasse);
+            echo $result;
 
-
-            // if($count!=0) // nom d'utilisateur et mot de passe correctes
-            // {
-            //     $_SESSION['connecte'] = $username;
-            //     header('Location: ./page/accueil.php');
-            // }
-            // else
-            // {
-            //     header('Location: login.php?erreur=1'); // utilisateur ou mot de passe incorrect
-            // }
+            if($result!=0) // nom d'utilisateur et mot de passe correctes
+             {
+                 $_SESSION['connecte'] = $username;
+                 header('Location: ../../page/accueil.php');
+             }
+             else
+             {
+                 header('Location: ../../index.php?erreur=1'); // utilisateur ou mot de passe incorrect
+             }
         }
-        // else
-        // {
-        //     header('Location: login.php?erreur=2'); // utilisateur ou mot de passe vide
-        // }
+         else
+         {
+             header('Location: ../../index.php?erreur=2'); // utilisateur ou mot de passe vide
+         }
     }
-    // else
-    // {
-    //     header('Location: login.php');
-    // }
+     else
+     {
+         header('Location: ../../index.php');
+    }
     
 ?>
