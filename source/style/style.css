@@ -115,3 +115,33 @@ input[type=submit]:hover {
 	color: #347dcc;
 	border: 1px solid #347ddc;
 }
+
+/* --- TABLEAUX DES PAGES POUR CONSULTER LA BD --- */
+
+h1{
+	margin-left: 10%;
+}
+table{
+	width: 80%;
+	margin: 0 auto;
+}
+
+table,td, th {
+	border:2px solid #cccccc;
+	padding:  10px;
+	border-collapse: collapse;
+	text-align: center;
+	
+  }
+  
+  th {
+	font-weight: 100;
+	background-color: #E3E3E3;
+  }
+
+  .contenaire-tableau{
+	display: block;
+	text-align: left;
+	
+	width: 100%;
+  }
