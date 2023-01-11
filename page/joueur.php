@@ -26,20 +26,20 @@ $requete = $linkpdo->query("SELECT `num_licence`, `nom`, `prénom`, `statut` FRO
             <th> prenom </th>
             <th> statut </th>
         </tr>
-<?php
-while($resultat = $requete->fetch()):
-    ?>
-    <tr>
-          <td> <?php echo $resultat['num_licence'] ?> </td>
-          <td> <?php echo $resultat['nom'] ?> </td>
-          <td> <?php echo $resultat['prénom'] ?> </td>
-          <td> <?php echo $resultat['statut'] ?> </td>
-    </tr>
+    <?php
+    while($resultat = $requete->fetch()):
+        ?>
+        <tr>
+            <td> <?php echo $resultat['num_licence'] ?> </td>
+            <td> <?php echo $resultat['nom'] ?> </td>
+            <td> <?php echo $resultat['prénom'] ?> </td>
+            <td> <?php echo $resultat['statut'] ?> </td>
+        </tr>
     <?php
 endwhile;
 ?>
-
-
 </table>
-        
+
 </div>
+
+<a href="ajouterjoueur.php">Ajouter joueur</a>
