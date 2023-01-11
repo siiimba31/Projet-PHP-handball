@@ -9,7 +9,7 @@ $title="Ajout d'un joueur";
 require 'header.php';
 ?>
 
-<form action="../source/fonction/........" method="post">
+<form action="../source/fonctionPHP/ajoutjoueur.php" method="post">
 
     <label for="nom_identifiant"> Numéro de license </label>
 	<input type="text" id="nom_identifiant" name="num_license" size="13" placeholder="0123456789101"/>
@@ -47,6 +47,7 @@ require 'header.php';
 		<option value="3">Au repos</option>
 		<option value="4">En forme</option>
 	</select>
+    <br>
 
     <label for="postejoueur"> Poste du joueur </label>
 	<select name="poste" id="postejoueur">
@@ -58,5 +59,7 @@ require 'header.php';
         <option value="6">Arrière gauche</option>
         <option value="7">Arrière droit</option>
 	</select>
+    <br>
 
+    <input type="submit" value="Valider">
 </form>
