@@ -17,10 +17,10 @@ if (isset($_POST['envoyer'])){
         };
         if(empty($errors)==true){
             move_uploaded_file($file_tmp,"../source/photo/".$_POST['num_license'].'.'.$file_ext);
+            header('Location: ../source/fonctionPHP/ajoutjoueur.php');
         }else{
             print_r($errors);
         };
-        header('Location: ../source/fonctionPHP/ajoutjoueur.php');
     };
 };
 
@@ -34,11 +34,12 @@ require 'header.php';
 
 
 ?>
-
-<form action="#" enctype = "multipart/form-data" method="post">
+<body>
+<main>
+<form action="../source/fonctionPHP/ajoutjoueur.php" enctype = "multipart/form-data" method="post">
 
     <label for="license"> Numéro de license </label>
-	<input type="number" id="license" name="num_license" size="13" placeholder="0123456789101" required/>
+	<input type="number" id="license" name="numlicense" size="13" placeholder="0123456789101" required/>
     <br>
 
     <label for="nom_joueur"> Nom du joueur </label>
@@ -52,23 +53,31 @@ require 'header.php';
     <label for="date_de_naissance"> Date de naissance </label>
     <br>
 	<input type="date" id="date_de_naissance" name="datenaissance" required/>
-    <br>
-
-    <label for="commentaire"> Commentaire sur le joueur : </label>
-	<textarea name="commentaire" id="commentaire" >  </textarea>
-	<br>		
+    <br>		
 
     <label for="photo_joueur"> Photo du joueur </label>
 	<input type="file" id="photo_joueur" accept="image/png, image/jpeg" name="image" />
+    <br>
+
+    <label for="num_telephone"> Numéro de téléphone </label>
+    <input type="text" id="num_telephone" name="telephone" size="10" placeholder="0611223344" required/>
+    <br>
+
+    <label for="taille"> Taille en cm </label>
+	<input type="number" id="taille" name="taille" size="3"  placeholder="156" required/>
+    <br>
+
+    <label for="poids"> Poids en kg </label>
+	<input type="number" id="poids" name="poids" size="3"  placeholder="70" required/>
     <br>
 
     <label for="numéro_maillot"> Numéro du maillot </label>
 	<input type="int" id="numéro_maillot" name="num_maillot" max="99" min="01" placeholder="32" required/>
     <br>
 
-    <label for="num_telephone"> Numéro de téléphone </label>
-    <input type="text" id="num_telephone" name="telephone" size="10" placeholder="0611223344" required/>
-    <br>
+    <label for="commentaire"> Commentaire sur le joueur : </label>
+	<textarea name="commentaire" id="commentaire" >  </textarea>
+	<br>
 
     <label for="statuts"> Statut du joueur </label>
 	<select name="statut" id="statuts" required>
@@ -93,3 +102,6 @@ require 'header.php';
 
     <input type="submit" name="envoyer" value="Valider">
 </form>
+</main>
+</body>
+</html>

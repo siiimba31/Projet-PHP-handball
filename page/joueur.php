@@ -12,10 +12,14 @@ require 'header.php';
 
 <?php
 require './../source/fonctionPHP/connexionbd.php';
-$requete = $linkpdo->prepare("SELECT `num_licence`, `nom`, `prénom`, `date_naissance`, `photo`, `numero`, `telephone`, `statut`, `commentaire`, `intituler_poste`, `Taille`, `poids` FROM `joueur`, `Statuts`, `poste` WHERE joueur.id_statut=Statuts.id_statut AND joueur.id_poste=poste.id_poste");
+$requete = $linkpdo->prepare("SELECT `numlicence`, `nom`, `prenom`, `datenaissance`, `photo`, `numero`, `telephone`, `statut`, `commentaire`, `nomP`, `taille`, `poids` FROM `joueur`, `Statuts`, `poste` WHERE joueur.IDstatut=Statuts.IDstatut AND joueur.IDposte=poste.IDposte");
 $requete ->execute();
 ?>
-
+<body>
+<main>
+    <div>
+        <a class="button-75" href="ajouterjoueur.php">Ajouter joueur</a>
+    </div>
 <div class="contenaire-tableau">
 <h1> Joueur du club </h1>
 
@@ -40,20 +44,21 @@ $requete ->execute();
     while($resultat = $requete->fetch()):
         ?>
         <tr>
-            <td> <?php echo $resultat['num_licence'] ?> </td>
-            <td> <?php echo $resultat['photo'] ?> </td>
+            <?php $photo=$resultat['photo']; ?>
+            <td> <?php echo $resultat['numlicence'] ?> </td>
+            <td><?php echo "<img class='imgJ' src='../source/".$photo."' alt='Photo'></img>";?></td>
             <td> <?php echo $resultat['nom'] ?> </td>
-            <td> <?php echo $resultat['prénom'] ?> </td>
-            <td> <?php echo $resultat['date_naissance'] ?> </td>
+            <td> <?php echo $resultat['prenom'] ?> </td>
+            <td> <?php echo $resultat['datenaissance'] ?> </td>
             <td> <?php echo $resultat['telephone'] ?> </td>
-            <td> <?php echo $resultat['Taille'] ?> </td>
+            <td> <?php echo $resultat['taille'] ?> </td>
             <td> <?php echo $resultat['poids'] ?> </td>
             <td> <?php echo $resultat['numero'] ?> </td>
-            <td> <?php echo $resultat['intituler_poste'] ?> </td>
+            <td> <?php echo $resultat['nomP'] ?> </td>
             <td> <?php echo $resultat['statut'] ?> </td>
             <td> <?php echo $resultat['commentaire'] ?> </td>
-            <td> <a href="modifierjoueur.php?ID='".<?php echo $resultat['num_licence']?>>Modifier</a> </td>
-            <td> <a href="supprimerjoueur.php?ID='".<?php echo $resultat['num_licence']?>>Supprimer</a> </td>
+            <td> <a href="modifierjoueur.php?ID='".<?php echo $resultat['numlicence']?>><img class="imgB" src="../source/img/modifier.png" alt="Modifier"></img></a> </td>
+            <td> <a href="supprimerjoueur.php?ID='".<?php echo $resultat['numlicence']?>><img class="imgB" src="../source/img/supprimer.png" alt="Supprimer"></img></a> </td>
         </tr>
     <?php
 endwhile;
@@ -61,5 +66,6 @@ endwhile;
 </table>
 
 </div>
-
-<a href="ajouterjoueur.php">Ajouter joueur</a>
+</main>
+</body>
+</html>

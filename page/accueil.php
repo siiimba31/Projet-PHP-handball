@@ -8,3 +8,13 @@ utilisateur_connecte();
 $title='Accueil';
 require 'header.php';
 ?>
+<body>
+<main>
+    <div>
+        <a class="button-75" href="ajouterjoueur.php">Ajouter joueur</a>
+    </div>
+    <div>
+        <a class="button-75" href="ajoutermatch.php">Ajouter match</a>
+    </div>
+</main>
+</body>
