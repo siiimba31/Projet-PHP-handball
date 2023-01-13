@@ -4,7 +4,6 @@
     top: 0;
  }
 
-
 /* --- HEADER --- */
 
 #logo {
@@ -37,7 +36,7 @@
     width: 100%;
     box-sizing: border-box;
     align-items: center;
-    background-color: rgb(230, 55, 174);
+    background-color: rgb(237, 160, 243);
 
 }
 

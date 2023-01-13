@@ -23,7 +23,7 @@
                 <li class="limenu"><a href=statistique.php>STATISTIQUE</a></li>
                 <li class="limenu"><a href=deconnexion.php>DECONNEXION</a></li>
             </ul>
-            <img id="logo" src="../source/img/logo.png" alt="logo équipe">
+            <img id="logo" src="../source/img/logo-removebg-preview.png" alt="logo équipe">
         </nav>
         
     </header>

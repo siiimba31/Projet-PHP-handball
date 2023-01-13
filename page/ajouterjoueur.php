@@ -31,9 +31,8 @@ utilisateur_connecte();
 //et le le nom de notre page avec la variable $title
 $title="Ajout d'un joueur";
 require 'header.php';
-
-
 ?>
+
 <body>
 <main>
 <form action="../source/fonctionPHP/ajoutjoueur.php" enctype = "multipart/form-data" method="post">

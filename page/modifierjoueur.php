@@ -7,4 +7,5 @@ utilisateur_connecte();
 //et le le nom de notre page avec la variable $title
 $title='ModifierJoueur';
 require 'header.php';
+echo htmlspecialchars($_GET["ID"]);
 ?>
