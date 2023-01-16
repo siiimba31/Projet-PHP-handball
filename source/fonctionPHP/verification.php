@@ -9,9 +9,10 @@
         $password=$_POST['password'];
         if($username !== "" && $password !== "")
         {
-            $requete = $linkpdo->query("SELECT motdepasse as mdp FROM utilisateur where username ='$username' ");
+            $requete = $linkpdo->prepare("SELECT motdepasse as mdp FROM utilisateur where username =:username ");
+            $requete ->execute(array('username'=>$username));
             $resultat = $requete->fetchAll();
-            echo $resultat[0]['mdp']."alope";
+            echo $resultat[0]['mdp'];
             $hashmotdepasse = $resultat[0]['mdp'];
             $result = password_verify($password, $hashmotdepasse);
             echo $result;
