@@ -21,7 +21,7 @@ $requete ->execute();
     </div>
 
     <div class="contenaire-tableau">
-        <h1> Joueur du club </h1>
+        <h1> Match </h1>
 
         <table>
             <tr>
@@ -30,6 +30,8 @@ $requete ->execute();
                 <th> Date du match </th>
                 <th> Heure du match </th>
                 <th> Résultat du match </th>
+                <th> Modifier le match </th>
+                <th> Supprimer le match </th>
             </tr>
             <?php
             while($resultat = $requete->fetch()):
@@ -40,6 +42,8 @@ $requete ->execute();
                     <td> <?php echo $resultat['dateM'] ?> </td>
                     <td> <?php echo $resultat['heure'] ?> </td>
                     <td> <?php echo $resultat['resultat'] ?> </td>
+                    <td> <a href="modifiermatch.php?ID=<?php echo $resultat['IDmatch']?>"><img class="imgB" src="../source/img/modifier.png" alt="Modifier"></img></a> </td>
+                    <td> <a href="../source/fonctionPHP/supprimermatch.php?ID=<?php echo $resultat['IDmatch']?>"><img class="imgB" src="../source/img/supprimer.png" alt="Supprimer"></img></a> </td>
                 </tr>
             <?php
             endwhile;

@@ -1,8 +1,8 @@
 <?php
 $ID=htmlspecialchars($_GET["ID"]);
-$license = $_POST['numlicense'];
 
-if(isset($_FILES['image'])){
+$license = $_POST['numlicense'];
+if($_FILES['image']['name']!=""){
     $errors= array();
     $file_name = $_FILES['image']['name'];
     $file_size =$_FILES['image']['size'];
@@ -21,12 +21,18 @@ if(isset($_FILES['image'])){
     }else{
         print_r($errors);
     };
+    $photo = "photo/".$license.'.'.$file_ext;
+}else{
+    require './connexionbd.php';
+    $requete = $linkpdo->prepare("SELECT `photo` FROM `joueur` WHERE joueur.numlicence= :licence");
+    $requete ->execute(array('licence'=>$ID));
+    $resultat = $requete->fetchAll();
+    $photo = $resultat[0]['photo'];
 };
 
 $nom = $_POST['nom'];
 $prenom = $_POST['prenom'];
 $datenaissance = $_POST['datenaissance'];
-$photo = "photo/".$license.'.'.$file_ext;
 $num_maillot = $_POST['num_maillot'];
 $telephone = $_POST['telephone'];
 $taille = $_POST['taille'];
@@ -38,5 +44,5 @@ $poste = $_POST['poste'];
 require './connexionbd.php';
 $requete = $linkpdo->prepare("UPDATE `joueur` SET `nom`=:nom,`prenom`=:prenom,`datenaissance`=:datenaissance,`photo`=:photo',`numero`=:num_maillot,`telephone`=:telephone,`IDstatut`=:statut,`commentaire`=:commentaire,`IDposte`=:poste,`taille`=:taille,`poids`=:poids,`numlicence`=:license WHERE numlicence=:id");
 $requete ->execute(array('nom'=>$nom, 'prenom'=>$prenom,'datenaissance'=>$datenaissance,'photo'=>$photo,'num_maillot'=>$num_maillot,'telephone'=>$telephone,'statut'=>$statut,'commentaire'=>$commentaire,'poste'=>$poste, 'taille'=>$taille, 'poids'=>$poids, 'license'=>$license, 'id'=>$ID));
-
+header('Location:../../page/joueur.php');
 ?>
