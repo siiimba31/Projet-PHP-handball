@@ -10,26 +10,28 @@ require 'header.php';
 $ID=htmlspecialchars($_GET["ID"]);
 
 require './../source/fonctionPHP/connexionbd.php';
-$requete = $linkpdo->prepare("SELECT `numlicence`, `nom`, `prenom`, `datenaissance`, `photo`, `numero`, `telephone`, `IDstatut`, `commentaire`, `IDposte`, `taille`, `poids` FROM `joueur` WHERE joueur.numlicence= :licence");
+$requete = $linkpdo->prepare("SELECT `numlicence`, `nom`, `prenom`, `datenaissance`, `photo`, `numero`, `telephone`, joueur.IDstatut, `statut`, `commentaire`, joueur.IDposte, `nomP`, `taille`, `poids` FROM `joueur`, `Statuts`, `poste` WHERE joueur.IDstatut=Statuts.IDstatut AND joueur.IDposte=poste.IDposte AND joueur.numlicence= :licence");
 $requete ->execute(array('licence'=>$ID));
 $resultat = $requete->fetchAll();
 $licence = $resultat[0]['numlicence'];
 $nom = $resultat[0]['nom'];
 $prenom = $resultat[0]['prenom'];
 $datenaissance = $resultat[0]['datenaissance'];
-$photo = "../source/".$resultat[0]['photo'];
+$photo = $resultat[0]['photo'];
 $num_maillot = $resultat[0]['numero'];
 $telephone = $resultat[0]['telephone'];
 $taille = $resultat[0]['taille'];
 $poids = $resultat[0]['poids'];
-$statut = $resultat[0]['IDstatut'];
+$idstatut = $resultat[0]['IDstatut'];
+$statut = $resultat[0]['statut'];
 $commentaire = $resultat[0]['commentaire'];
-$poste = $resultat[0]['IDposte'];
+$idposte = $resultat[0]['IDposte'];
+$poste = $resultat[0]['nomP'];
 
 
 ?>
 
-<form action="../source/fonctionPHP/ajoutjoueur.php" enctype = "multipart/form-data" method="post">
+<form action="../source/fonctionPHP/modifjoueur.php?ID=<?php echo $ID?>" enctype = "multipart/form-data" method="post">
 
     <label for="license"> Numéro de license </label>
 	<input type="number" id="license" name="numlicense" size="13" value="<?=$licence?>" required/>
@@ -74,7 +76,7 @@ $poste = $resultat[0]['IDposte'];
 
     <label for="statuts"> Statut du joueur </label>
 	<select name="statut" id="statuts" required>
-        <option value="<?=$statut?>"> ( <?php echo $statut?> )</option>
+        <option value="<?=$idstatut?>"> ( <?php echo $statut?> )</option>
 		<option value="1">Bléssé</option>
 		<option value="2">Absent</option>
 		<option value="3">Au repos</option>
@@ -84,6 +86,7 @@ $poste = $resultat[0]['IDposte'];
 
     <label for="postejoueur"> Poste du joueur </label>
 	<select name="poste" id="postejoueur" value="<?=$nomp?>" required>
+        <option value="<?=$idposte?>"> ( <?php echo $poste?> )</option>
 		<option value="1">Gardien</option>
 		<option value="2">Demi-centre</option>
 		<option value="3">Pivot</option>
@@ -94,5 +97,5 @@ $poste = $resultat[0]['IDposte'];
 	</select>
     <br>
 
-    <input type="submit" name="envoyer" value="Valider">
+    <input type="submit" name="miseajour" value="mettre à jour">
 </form>

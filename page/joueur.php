@@ -59,7 +59,7 @@ $requete ->execute();
                     <td> <?php echo $resultat['statut'] ?> </td>
                     <td> <?php echo $resultat['commentaire'] ?> </td>
                     <td> <a href="modifierjoueur.php?ID=<?php echo $resultat['numlicence']?>"><img class="imgB" src="../source/img/modifier.png" alt="Modifier"></img></a> </td>
-                    <td> <a href="supprimerjoueur.php?ID='".<?php echo $resultat['numlicence']?>><img class="imgB" src="../source/img/supprimer.png" alt="Supprimer"></img></a> </td>
+                    <td> <a href="../source/fonctionPHP/supprimerjoueur.php?ID=<?php echo $resultat['numlicence']?>"><img class="imgB" src="../source/img/supprimer.png" alt="Supprimer"></img></a> </td>
                 </tr>
             <?php
             endwhile;
