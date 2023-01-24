@@ -1,3 +1,8 @@
+<?php
+session_start();
+require './../source/fonctionPHP/est_connecte.php';
+utilisateur_connecte();
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -23,7 +28,7 @@
                 <li class="limenu"><a href=statistique.php>STATISTIQUE</a></li>
                 <li class="limenu"><a href=deconnexion.php>DECONNEXION</a></li>
             </ul>
-            <img id="logo" src="../source/img/logo-removebg-preview.png" alt="logo équipe">
+            <img id="logo" src="../source/img/logosite.png" alt="logo équipe">
         </nav>
         
     </header>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 $erreur = null;
 if (!empty($_POST['pseudo']))
 ?>

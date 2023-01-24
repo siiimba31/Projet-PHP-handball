@@ -1,8 +1,4 @@
-<?php 
-
-require './../source/fonctionPHP/est_connecte.php';
-utilisateur_connecte();
-
+<?php
 // on appelle la page header qui vas nous afficher l'entete 
 //et le le nom de notre page avec la variable $title
 $title="Ajout d'un joueur";
@@ -56,10 +52,10 @@ require 'header.php';
 
     <label for="statuts"> Statut du joueur </label>
 	<select name="statut" id="statuts" required>
-		<option value="1">Bléssé</option>
-		<option value="2">Absent</option>
-		<option value="3">Au repos</option>
-		<option value="4">En forme</option>
+		<option value="1">Actif</option>
+		<option value="2">Blessé</option>
+		<option value="3">Suspendu</option>
+		<option value="4">Absent</option>
 	</select>
     <br>
 
