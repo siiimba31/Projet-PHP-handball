@@ -13,13 +13,14 @@ $requete ->execute();
 ?>
 <body>
 <main>
+    <br>
     <div>
         <a class="button-75" href="ajouterjoueur.php">Ajouter joueur</a>
     </div>
-
+    <br>
+    <h1> Joueur du club </h1>
+    <br>
     <div class="contenaire-tableau">
-        <h1> Joueur du club </h1>
-
         <table>
             <tr>
                 <th> Licence </th>

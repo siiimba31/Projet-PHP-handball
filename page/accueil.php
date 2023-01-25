@@ -7,9 +7,11 @@ require 'header.php';
 ?>
 <body>
 <main>
+    <br>
     <div>
         <a class="button-75" href="ajouterjoueur.php">Ajouter joueur</a>
     </div>
+    <br>
     <div>
         <a class="button-75" href="ajoutermatch.php">Ajouter match</a>
     </div>

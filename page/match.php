@@ -7,18 +7,19 @@ require 'header.php';
 
 <?php
 require './../source/fonctionPHP/connexionbd.php';
-$requete = $linkpdo->prepare("SELECT `IDmatch`, `resultat`, `nomADV`, `dateM`, `lieu`, `heure` FROM `matchj`");
+$requete = $linkpdo->prepare("SELECT `IDmatch`, `resultat`, `nomADV`, `dateM`, `lieu`, `heure` FROM `matchj` ORDER BY dateM DESC");
 $requete ->execute();
 ?>
 <body>
 <main>
+<br>
     <div>
         <a class="button-75" href="ajoutermatch.php">Ajouter match</a>
     </div>
-
+    <br>
+    <h1> Match </h1>
+    <br>
     <div class="contenaire-tableau">
-        <h1> Match </h1>
-
         <table>
             <tr>
                 <th> Adversaire </th>

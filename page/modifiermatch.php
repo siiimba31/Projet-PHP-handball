@@ -18,7 +18,6 @@ $heure = $resultat[0]['heure'];
 
 ?>
 
-<body>
 <main>
 <form action="../source/fonctionPHP/modifimatch.php?ID=<?php echo $ID?>" enctype = "multipart/form-data" method="post">
 

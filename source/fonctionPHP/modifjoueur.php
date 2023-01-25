@@ -43,7 +43,7 @@
     $poste = $_POST['poste'];
     //requete d'insertion dans JOUEUR
     require './connexionbd.php';
-    $requete = $linkpdo->prepare("UPDATE `joueur` SET `nom`=:nom,`prenom`=:prenom,`datenaissance`=:datenaissance,`photo`=:photo',`numero`=:num_maillot,`telephone`=:telephone,`IDstatut`=:statut,`commentaire`=:commentaire,`IDposte`=:poste,`taille`=:taille,`poids`=:poids,`numlicence`=:license WHERE numlicence=:id");
+    $requete = $linkpdo->prepare("UPDATE `joueur` SET `nom`=:nom,`prenom`=:prenom,`datenaissance`=:datenaissance,`photo`=:photo,`numero`=:num_maillot,`telephone`=:telephone,`IDstatut`=:statut,`commentaire`=:commentaire,`IDposte`=:poste,`taille`=:taille,`poids`=:poids,`numlicence`=:license WHERE numlicence=:id");
     $requete ->execute(array('nom'=>$nom, 'prenom'=>$prenom,'datenaissance'=>$datenaissance,'photo'=>$photo,'num_maillot'=>$num_maillot,'telephone'=>$telephone,'statut'=>$statut,'commentaire'=>$commentaire,'poste'=>$poste, 'taille'=>$taille, 'poids'=>$poids, 'license'=>$license, 'id'=>$ID));
 ?>
 <script type='text/javascript'>document.location.replace('../../page/joueur.php');</script>";
