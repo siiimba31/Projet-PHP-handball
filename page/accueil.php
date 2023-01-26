@@ -5,7 +5,7 @@
 $title='Accueil';
 require 'header.php';
 ?>
-<body>
+
 <main>
     <br>
     <div>
@@ -16,4 +16,7 @@ require 'header.php';
         <a class="button-75" href="ajoutermatch.php">Ajouter match</a>
     </div>
 </main>
-</body>
+
+<?php 
+require 'footer.php';
+?>

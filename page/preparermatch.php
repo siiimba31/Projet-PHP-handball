@@ -21,6 +21,7 @@ $requetepj ->execute(array('ID'=>$ID));
 
 <main>
     <br>
+    <h1> Joueur Actif pouvant participer au Match : </h1>
     <br>
     <div class="contenaire-tableau">
         <table>
@@ -51,8 +52,8 @@ $requetepj ->execute(array('ID'=>$ID));
                     <td> <?php echo $resultat['nomP'] ?> </td>
                     <td> <?php echo $resultat['taille'] ?> </td>
                     <td> <?php echo $resultat['poids'] ?> </td>
-                    <td> <a href="../source/fonctionPHP/ajouttitulaire.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>"><img class="imgB" src="../source/img/prepareM.png" alt="Modifier"></img></a> </td>
-                    <td> <a href="../source/fonctionPHP/ajoutremplacant.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>>"> <img class="imgB" src="../source/img/modifier.png" alt="Modifier"> </img> </a> </td>
+                    <td> <a href="../source/fonctionPHP/ajouttitulaire.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>"><img class="imgB" src="../source/img/titulaire.jpg" alt="Modifier"></img></a> </td>
+                    <td> <a href="../source/fonctionPHP/ajoutremplacant.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>"> <img class="imgB" src="../source/img/bench.png" alt="Modifier"> </img> </a> </td>
                     
                 </tr>
             <?php
@@ -61,6 +62,7 @@ $requetepj ->execute(array('ID'=>$ID));
         </table>
     </div>
     <br>
+    <h1> Joueur participant au Match </h1>
     <br>
     <div class="contenaire-tableau">
         <table>
@@ -70,6 +72,7 @@ $requetepj ->execute(array('ID'=>$ID));
                 <th> Prenom </th>
                 <th> Poste </th>
                 <th> Titulaire </th>
+                <th> Enlevé </th>
             </tr>
             <?php
             while($resultat = $requetepj->fetch()):
@@ -88,6 +91,7 @@ $requetepj ->execute(array('ID'=>$ID));
                         }
                         ?>
                     </td>
+                    <td> <a href="../source/fonctionPHP/supprimeparticiper.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>"> <img class="imgB" src="../source/img/supprimer.png" alt="Modifier"> </img> </a> </td>
                 </tr>
             <?php
             endwhile;
@@ -95,5 +99,7 @@ $requetepj ->execute(array('ID'=>$ID));
         </table>
     </div>
 </main>
-</body>
+<?php 
+require 'footer.php';
+?>
 

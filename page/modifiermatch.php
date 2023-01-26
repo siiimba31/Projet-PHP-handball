@@ -16,6 +16,9 @@ $datedumatch = $resultat[0]['dateM'];
 $lieum = $resultat[0]['lieu'];
 $heure = $resultat[0]['heure'];
 
+require './../source/fonctionPHP/connexionbd.php';
+$requetepj = $linkpdo->prepare("SELECT  joueur.numlicence, joueur.nom, joueur.prenom, nomP, `titulaire`, participer.evaluation FROM `participer`, joueur, poste WHERE participer.numlicence=joueur.numlicence and participer.IDmatch=:ID and poste.IDposte=joueur.IDposte");
+$requetepj ->execute(array('ID'=>$ID));
 ?>
 
 <main>
@@ -54,11 +57,66 @@ $heure = $resultat[0]['heure'];
                     <option value='Perdu'>Perdu</option>
                     <option value='Nul'>Nul</option>
             </select>";
+
         }
     ?>
+    <br>
 
+    <div class="contenaire-tableau">
+        <?php
+            ?>
+            <table>
+                <tr>
+                    <th> Licence </th>
+                    <th> Nom </th>
+                    <th> Prenom </th>
+                    <th> Poste </th>
+                    <th> Titulaire </th>
+                    <th> Evaluation de 1 à 5 </th>
+                </tr>
+                <?php
+                $i=0;
+                $numlicences=[];
+                while($resultat = $requetepj->fetch()):
+                    $numlicences[$i]=$resultat['numlicence'];
+                ?>
+                    <tr>
+                        <td> <?php echo $resultat['numlicence'] ?> </td>
+                        <td> <?php echo $resultat['nom'] ?> </td>
+                        <td> <?php echo $resultat['prenom'] ?> </td>
+                        <td> <?php echo $resultat['nomP'] ?> </td>
+                        <td> 
+                            <?php 
+                            if ($resultat['titulaire']==1){
+                                echo "Titulaire";
+                            }else {
+                                echo "Remplaçant";
+                            }
+                            ?>
+                        </td>
+                        <?php 
+                        if($datedumatch> date('Y-m-d')){
+                            echo "<td> <input type='text' name='resultat' id='resultat' value='' placeholder='Match Non Terminé' readonly> </td>";
+                        }else{
+                            $evalua=$resultat['evaluation'];
+                            echo "<td> <input type='number' id='eval' name='eval$i' maxlenght='1' value='$evalua' required> </td>";
+                        }
+                        ?>
+                    </tr>
+                <?php
+                $i++;
+                endwhile;
+            ?>
+            <input type="hidden" name="licences" value="<?php echo base64_encode(serialize($numlicences)); ?>" required/>
+            <input type="hidden" name="i" value="<?php echo $i?>" required/>
+            
+        </table>
+    </div>
     <input type="submit" name="envoyer" value="Valider">
 </form>
 </main>
-</body>
+<?php 
+require 'footer.php';
+?>
+
 

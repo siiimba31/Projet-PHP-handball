@@ -4,8 +4,6 @@
 $title='ModifierJoueur';
 require 'header.php';
 ?>
-
-<body>
 <main>
 <form action="../source/fonctionPHP/ajoutmatch.php" enctype = "multipart/form-data" method="post">
 
@@ -32,4 +30,6 @@ require 'header.php';
     <input type="submit" name="envoyer" value="Valider">
 </form>
 </main>
-</body>
+<?php 
+require 'footer.php';
+?>
