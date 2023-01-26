@@ -15,9 +15,7 @@ $requete ->execute();
     <div>
         <a class="button-75" href="ajoutermatch.php">Ajouter match</a>
     </div>
-    <br>
     <h1> Match </h1>
-    <br>
     <div class="contenaire-tableau">
         <table>
             <tr>

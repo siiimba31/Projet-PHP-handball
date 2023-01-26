@@ -20,9 +20,7 @@ $requetepj ->execute(array('ID'=>$ID));
 ?>
 
 <main>
-    <br>
     <h1> Joueur Actif pouvant participer au Match : </h1>
-    <br>
     <div class="contenaire-tableau">
         <table>
             <tr>
@@ -62,9 +60,7 @@ $requetepj ->execute(array('ID'=>$ID));
             ?>
         </table>
     </div>
-    <br>
     <h1> Joueur participant au Match </h1>
-    <br>
     <div class="contenaire-tableau">
         <table>
             <tr>

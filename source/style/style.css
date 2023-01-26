@@ -80,7 +80,7 @@ footer{
 
 
 #connexion{
-	background: #70afee;
+
 	width: 100vw;
 }
 
@@ -88,6 +88,7 @@ footer{
 	width:400px;
 	margin: auto;
 	margin-top:10%;
+	border: solid 5px rgb(237, 160, 243);
 }
 
 form {
@@ -116,7 +117,7 @@ form {
 
 /* Set a style for all buttons */
 input[type=submit] {
-	background-color: #347ddc;
+	background-color: rgb(237, 160, 243);
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
@@ -127,14 +128,17 @@ input[type=submit] {
 
 input[type=submit]:hover {
 	background-color: white;
-	color: #347dcc;
-	border: 1px solid #347ddc;
+	color: rgb(237, 160, 243);
+	border: 1px solid rgb(237, 160, 243);
 }
 
 /* --- TABLEAUX DES PAGES POUR CONSULTER LA BD --- */
 
 h1{
+	padding: 0.8ex;
+	margin: 5px;
 	margin-left: 10%;
+
 }
 table{
 	width: 80%;
@@ -229,12 +233,11 @@ table,td, th {
 
 /* --- FORMULAIRE --- */
 
-.formulaire {
-	display : flex;
+form input, select, textarea{
+	padding: 0.8ex;
+	margin: 5px;
 }
 
-.question {
-	flex-basis: 45%;
-	vertical-align:bottom;
+form label{
+	padding: auto;
 }
-

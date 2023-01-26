@@ -15,7 +15,6 @@ $requete2 ->execute();
 <main>
 <div class="contenaire-tableau">
         <h1> Statistique de Match  </h1>
-
         <table>
             <tr>
                 <th> Nombre de match </th>
@@ -46,8 +45,6 @@ $requete2 ->execute();
         </table>
     </div>
 
-    <br>
-    <br>
 
     <div class="contenaire-tableau">
         <h1> Statistique des Joueurs  </h1>

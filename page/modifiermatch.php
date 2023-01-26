@@ -34,14 +34,13 @@ $requetepj ->execute(array('ID'=>$ID));
 		<option value="Domicile"> Domicile </option>
 		<option value="Exterieur"> Exterieur </option>
 	</select>
+    <br>
 
     <label for="datematch"> Date du match </label>
-    <br>
 	<input type="date" id="datematch" name="datematch" value="<?=$datedumatch?>" required/>
     <br>
 
     <label for="heurematch"> Heure du match </label>
-    <br>
 	<input type="time" id="heurematch" name="heurematch" value="<?=$heure?>" required/>
     <br>
 
@@ -109,7 +108,6 @@ $requetepj ->execute(array('ID'=>$ID));
             ?>
             <input type="hidden" name="licences" value="<?php echo base64_encode(serialize($numlicences)); ?>" required/>
             <input type="hidden" name="i" value="<?php echo $i?>" required/>
-            
         </table>
     </div>
     <input type="submit" name="envoyer" value="Valider">

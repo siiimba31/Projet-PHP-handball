@@ -16,14 +16,13 @@ require 'header.php';
 		<option value="Domicile"> Domicile </option>
 		<option value="Exterieur"> Exterieur </option>
 	</select>
-
-    <label for="datematch"> Date du match </label>
     <br>
+    
+    <label for="datematch"> Date du match </label>
 	<input type="date" id="datematch" name="datematch" required/>
     <br>
 
     <label for="heurematch"> Heure du match </label>
-    <br>
 	<input type="time" id="heurematch" name="heurematch" required/>
     <br>
 
