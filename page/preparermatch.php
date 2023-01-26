@@ -9,7 +9,7 @@ $ID=htmlspecialchars($_GET["ID"]);
 
 <?php
 require './../source/fonctionPHP/connexionbd.php';
-$requetejf = $linkpdo->prepare("SELECT joueur.numlicence, `nom`, `prenom`, `photo`, `statut`, `commentaire`, `nomP`, `taille`, `poids` FROM `joueur`, `Statuts`, `poste` WHERE joueur.IDstatut=Statuts.IDstatut AND joueur.IDposte=poste.IDposte AND joueur.numlicence NOT IN (SELECT numlicence FROM participer WHERE participer.IDmatch=:ID) AND joueur.IDstatut=1");
+$requetejf = $linkpdo->prepare("SELECT joueur.numlicence, `nom`, `prenom`, `photo`, `statut`, `commentaire`, `nomP`, `taille`, `poids`, AVG(evaluation) as eval FROM `joueur`, `Statuts`, `poste`, participer WHERE joueur.IDstatut=Statuts.IDstatut AND joueur.IDposte=poste.IDposte AND joueur.numlicence=participer.numlicence AND joueur.numlicence NOT IN (SELECT numlicence FROM participer WHERE participer.IDmatch=:ID) AND joueur.IDstatut=1 GROUP BY joueur.numlicence, `nom`, `prenom`, `photo`, `statut`, `commentaire`, `nomP`, `taille`, `poids`");
 $requetejf ->execute(array('ID'=>$ID));
 ?>
 
@@ -32,6 +32,7 @@ $requetepj ->execute(array('ID'=>$ID));
                 <th> Photo </th>
                 <th> Statut </th>
                 <th> Commentaire </th>
+                <th> Evaluation du joueur sur 5 </th>
                 <th> Poste </th>
                 <th> Taille </th>
                 <th> Poids </th>
@@ -49,12 +50,12 @@ $requetepj ->execute(array('ID'=>$ID));
                     <td> <?php echo "<img class='imgJ' src='../source/".$photo."' alt='Photo'></img>";?></td>
                     <td> <?php echo $resultat['statut'] ?> </td>
                     <td> <?php echo $resultat['commentaire'] ?> </td>
+                    <td> <?php echo round($resultat['eval'],2) ?> </td>
                     <td> <?php echo $resultat['nomP'] ?> </td>
                     <td> <?php echo $resultat['taille'] ?> </td>
                     <td> <?php echo $resultat['poids'] ?> </td>
                     <td> <a href="../source/fonctionPHP/ajouttitulaire.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>"><img class="imgB" src="../source/img/titulaire.jpg" alt="Modifier"></img></a> </td>
                     <td> <a href="../source/fonctionPHP/ajoutremplacant.php?ID=<?php echo $ID?>&licence=<?php echo $resultat['numlicence']?>"> <img class="imgB" src="../source/img/bench.png" alt="Modifier"> </img> </a> </td>
-                    
                 </tr>
             <?php
             endwhile;
