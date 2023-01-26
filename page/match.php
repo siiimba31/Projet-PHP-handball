@@ -4,13 +4,12 @@
 $title='Match';
 require 'header.php';
 ?>
-
 <?php
 require './../source/fonctionPHP/connexionbd.php';
 $requete = $linkpdo->prepare("SELECT `IDmatch`, `resultat`, `nomADV`, `dateM`, `lieu`, `heure` FROM `matchj` ORDER BY dateM DESC");
 $requete ->execute();
 ?>
-<body>
+
 <main>
 <br>
     <div>
@@ -50,4 +49,6 @@ $requete ->execute();
         </table>
     </div>
 </main>
-</body>
+<?php 
+require 'footer.php';
+?>

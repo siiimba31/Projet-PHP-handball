@@ -4,14 +4,12 @@
 $title='Joueur';
 require 'header.php';
 ?>
-
-
 <?php
 require './../source/fonctionPHP/connexionbd.php';
 $requete = $linkpdo->prepare("SELECT `numlicence`, `nom`, `prenom`, `datenaissance`, `photo`, `numero`, `telephone`, `statut`, `commentaire`, `nomP`, `taille`, `poids` FROM `joueur`, `Statuts`, `poste` WHERE joueur.IDstatut=Statuts.IDstatut AND joueur.IDposte=poste.IDposte");
 $requete ->execute();
 ?>
-<body>
+
 <main>
     <br>
     <div>
@@ -64,5 +62,6 @@ $requete ->execute();
         </table>
     </div>
 </main>
-</body>
-</html>
+<?php 
+require 'footer.php';
+?>

@@ -7,5 +7,5 @@
     require './connexionbd.php';
     $requete = $linkpdo->prepare("INSERT INTO `participer`(`IDmatch`, `titulaire`, `numlicence`) VALUES (:IDm,:titulaire,:numlicence)");
     $requete ->execute(array('IDm'=>$ID, 'titulaire'=>$titulaire, 'numlicence'=>$numlicence));
+    header("Location:../../page/preparermatch.php?ID=$ID");
 ?>
-<script type='text/javascript'>document.location.replace('../../page/match.php');</script>";
